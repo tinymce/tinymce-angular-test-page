@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
-import { AppComponent } from './app.component';
+import { AppComponent, TinyComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TinyComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    EditorModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
