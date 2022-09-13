@@ -10,7 +10,7 @@
   <h1>{{ title }}</h1>
   <ul>
     <li *ngFor="let version of channels">
-      <div [ngClass]="{ 'active': version.value === channel }"><a href="/?channel={{version.value}}">{{ version.name }}</a></div>
+      <div [ngClass]="{ 'active': version.value === channel }"><a href="{{baseUrl}}?channel={{version.value}}">{{ version.name }}</a></div>
     </li>
   </ul>
 

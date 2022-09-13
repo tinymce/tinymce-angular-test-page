@@ -20,6 +20,7 @@ export class AppComponent {
   title = 'tinymce-angular-test-page';
 
   public channel = '6-dev';
+  public baseUrl = window.location.href.indexOf('?') > 0 ? window.location.href.substring(0, window.location.href.indexOf('?')) : window.location.href;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
