@@ -49,7 +49,7 @@ const mergeTagsLits = [
 ];
 
 export const c1 = `{
-  plugins: "advlist autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount",
+  plugins: "advlist autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",
   height: 600,
   mergetags_prefix: '\${',
   mergetags_suffix: '}',
@@ -57,7 +57,7 @@ export const c1 = `{
   autocorrect_autocorrect: true,
   autocorrect_capitalize: true,
   toolbar:
-    "insertfile undo redo | styles | bold italic | wordcount | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+    "insertfile undo redo | styles typography | bold italic | wordcount | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
   mobile: {
     theme: "silver",
     plugins: "casechange link image lists advlist anchor code codesample preview table textpattern help wordcount",
@@ -74,9 +74,9 @@ export const c2 = `{
   mergetags_list: ${JSON.stringify(mergeTagsLits)},
   autocorrect_autocorrect: true,
   autocorrect_capitalize: true,
-  plugins: "advlist autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help",
+  plugins: "advlist autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
   toolbar:
-    "insertfile undo redo | styles | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+    "insertfile undo redo | styles typography | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
   mobile: {
     theme: "silver",
     plugins: "casechange lists advlist anchor code codesample preview table textpattern help",
@@ -86,14 +86,14 @@ export const c2 = `{
 }`;
 
 export const c3 = `{
-  plugins: "quickbars advlist autocorrect mergetags footnotes autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help",
+  plugins: "quickbars advlist autocorrect mergetags footnotes autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
   mergetags_prefix: '\${',
   mergetags_suffix: '}',
   mergetags_list: ${JSON.stringify(mergeTagsLits)},
   autocorrect_autocorrect: true,
   autocorrect_capitalize: true,
   toolbar:
-    "insertfile undo redo | styles | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+    "insertfile undo redo | styles typography | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
   quickbars_insert_toolbar:
     "quicktable quickimage quicklink styles ",
   quickbars_selection_toolbar:
@@ -132,12 +132,12 @@ export const c3 = `{
 }`;
 
 export const c4 = `{
-  plugins: "quickbars advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help",
+  plugins: "quickbars advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
   toolbar_mode: "sliding",
   toolbar_sticky: true,
   toolbar_location: "bottom",
   toolbar:
-      "insertfile undo redo | styles | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table help",
+      "insertfile undo redo | styles typography | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table help",
   quickbars_insert_toolbar:
       "quicktable quickimage quicklink styles ",
   quickbars_selection_toolbar:
@@ -150,7 +150,7 @@ export const c5 = `{
     "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
     "template", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
     "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
-    "autocorrect", "mergetags", "footnotes"
+    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss"
   ],
   mergetags_prefix: '\${',
   mergetags_suffix: '}',
@@ -168,7 +168,7 @@ export const c5 = `{
   tinycomments_author: 'qauser8@qa.com',
   tinycomments_author_name: 'SuperCoolQA',
   quickbars_insert_toolbar: 'quicktable quickimage quicklink styles',
-  quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | formatpainter pageembed permanentpen styles ',
+  quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote | code| forecolor backcolor typography| quicktable quickimage | formatpainter pageembed permanentpen styles ',
   toolbar: "bold italic underline strikethrough subscript superscript | fontfamily fontsize | numlist bullist checklist | permanentpen formatpainter removeformat forecolor backcolor | blockquote nonbreaking hr pagebreak | casechange styles blocks lineheight | ltr rtl outdent indent | align alignleft aligncenter alignright alignjustify alignnone | h1 h2 h3 h4 h5 h6 h7 |" +
     "copy cut paste pastetext selectall remove newdocument wordcount searchreplace | undo redo | save cancel restoredraft | fullscreen print preview export code help | template insertdatetime codesample emoticons charmap | anchor link unlink image media pageembed insertfile | visualblocks visualchars a11ycheck | spellchecker language spellcheckdialog | tableofcontents tableofcontentsupdate | " +
     "table advtablerownumbering tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
