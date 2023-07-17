@@ -115,152 +115,6 @@ const advtemplate_templates = [
   }
 ];
 
-export const c1 = `{
-  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",
-  height: 600,
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput| bold italic | wordcount | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-  mobile: {
-    theme: "silver",
-    plugins: "casechange link image lists advlist anchor code codesample preview table textpattern help wordcount",
-    toolbar:
-      " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
-    contextmenu: "link image table preview",
-  },
-}`;
-
-export const c2 = `{
-  inline: true,
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-  mobile: {
-    theme: "silver",
-    plugins: "casechange lists advlist anchor code codesample preview table textpattern help",
-    toolbar:
-      " casechange bold italic underline strikethrough | formatpainter numlist bullist | h1 h2 h3 | table preview code codesample help",
-  },
-}`;
-
-export const c3 = `{
-  plugins: "quickbars advlist advtemplate autocorrect mergetags footnotes autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
-  quickbars_insert_toolbar:
-    "quicktable quickimage quicklink styles ",
-  quickbars_selection_toolbar:
-    "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-  setup: function (editor) {
-    editor.ui.registry.addContextToolbar("imagealignment", {
-      predicate: function (node) {
-        return node.nodeName.toLowerCase() === "img";
-      },
-      items: "alignleft aligncenter alignright | image",
-      position: "node",
-      scope: "node",
-    });
-
-    editor.ui.registry.addContextToolbar("textselection1", {
-      predicate: function (node) {
-        return !editor.selection.isCollapsed();
-      },
-      items: "blockquote | bold italic | removeformat",
-      position: "selection",
-      scope: "node",
-    });
-  },
-  mobile: {
-    theme: "silver",
-    plugins: [
-      "quickbars casechange lists advlist anchor code codesample preview table textpattern help",
-    ],
-    toolbar:
-      " casechange bold italic underline strikethrough | formatpainter numlist bullist | h1 h2 h3 | table preview code codesample help",
-    quickbars_insert_toolbar:
-      "quicktable quickimage quicklink styles ",
-    quickbars_selection_toolbar:
-      "bold italic | forecolor backcolor | quicktable quickimage | styles ",
-  },
-}`;
-
-export const c4 = `{
-  plugins: "quickbars advlist advtemplate autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
-  toolbar_mode: "sliding",
-  toolbar_sticky: true,
-  toolbar_location: "bottom",
-  toolbar:
-      "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table help",
-  quickbars_insert_toolbar:
-      "quicktable quickimage quicklink styles ",
-  quickbars_selection_toolbar:
-      "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-}`;
-
-export const c5 = `{
-  plugins: [
-    "advtable", "autoresize", "anchor", "advlist", "autolink", "autosave", "charmap", "advcode", "codesample", "directionality", "emoticons", "fullscreen",
-    "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
-    "advtemplate", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
-    "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
-    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss"
-  ],
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  // The toolbar_mode option will no-longer accept the false value in TinyMCE 6.0, which was retained for backwards compatibility with the toolbar_drawer option. Use 'wrap' instead to keep the same functionality as false.
-  // toolbar_mode : Default Value: 'floating' / Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
-  toolbar_mode: 'sliding',
-  toolbar_sticky: true,
-  toolbar_location: 'top', //top, bottom
-  toolbar_sticky_offset: 10,
-  // Tiny Comments
-  tinycomments_mode: 'embedded',
-  tinycomments_author: 'qauser8@qa.com',
-  tinycomments_author_name: 'SuperCoolQA',
-  quickbars_insert_toolbar: 'quicktable quickimage quicklink styles',
-  quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote | code| forecolor backcolor typography| quicktable quickimage | formatpainter pageembed permanentpen styles ',
-  toolbar: "bold italic underline strikethrough subscript superscript addtemplate inserttemplate | fontfamily fontsize fontsizeinput | numlist bullist checklist | permanentpen formatpainter removeformat forecolor backcolor | blockquote nonbreaking hr pagebreak | casechange styles blocks lineheight | ltr rtl outdent indent | align alignleft aligncenter alignright alignjustify alignnone | h1 h2 h3 h4 h5 h6 h7 |" +
-    "copy cut paste pastetext selectall remove newdocument wordcount searchreplace | undo redo | save cancel restoredraft | fullscreen print preview export code help | template insertdatetime codesample emoticons charmap | anchor link unlink image media pageembed insertfile | visualblocks visualchars a11ycheck | spellchecker language spellcheckdialog | tableofcontents tableofcontentsupdate | " +
-    "table advtablerownumbering tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
-  menubar: 'file edit insert view format table footnotes footnotesupdate | tools help',
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-  mobile: {
-    theme: "silver",
-    plugins: [
-      "casechange link image lists advlist anchor code codesample preview table textpattern help autoresize wordcount",
-    ],
-    toolbar:
-      " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
-    contextmenu: "link image table preview",
-  },
-}`;
-
 const templates = {
   project_description: `
     <h1>Project title</h1>
@@ -408,6 +262,152 @@ body {
 
 #placeholder button.manage {
   background-image: url('images/template-icon-manage.png');
+}`;
+
+export const c1 = `{
+  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",
+  height: 600,
+  mergetags_prefix: '\${',
+  mergetags_suffix: '}',
+  mergetags_list: ${JSON.stringify(mergeTagsLits)},
+  autocorrect_autocorrect: true,
+  autocorrect_capitalize: true,
+  toolbar:
+    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput| bold italic | wordcount | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+  advcode_inline: true,
+  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+  mobile: {
+    theme: "silver",
+    plugins: "casechange link image lists advlist anchor code codesample preview table textpattern help wordcount",
+    toolbar:
+      " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
+    contextmenu: "link image table preview",
+  },
+}`;
+
+export const c2 = `{
+  inline: true,
+  mergetags_prefix: '\${',
+  mergetags_suffix: '}',
+  mergetags_list: ${JSON.stringify(mergeTagsLits)},
+  autocorrect_autocorrect: true,
+  autocorrect_capitalize: true,
+  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
+  toolbar:
+    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+  advcode_inline: true,
+  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+  mobile: {
+    theme: "silver",
+    plugins: "casechange lists advlist anchor code codesample preview table textpattern help",
+    toolbar:
+      " casechange bold italic underline strikethrough | formatpainter numlist bullist | h1 h2 h3 | table preview code codesample help",
+  },
+}`;
+
+export const c3 = `{
+  plugins: "quickbars advlist advtemplate autocorrect mergetags footnotes autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
+  mergetags_prefix: '\${',
+  mergetags_suffix: '}',
+  mergetags_list: ${JSON.stringify(mergeTagsLits)},
+  autocorrect_autocorrect: true,
+  autocorrect_capitalize: true,
+  toolbar:
+    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
+  quickbars_insert_toolbar:
+    "quicktable quickimage quicklink styles ",
+  quickbars_selection_toolbar:
+    "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
+  advcode_inline: true,
+  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+  setup: function (editor) {
+    editor.ui.registry.addContextToolbar("imagealignment", {
+      predicate: function (node) {
+        return node.nodeName.toLowerCase() === "img";
+      },
+      items: "alignleft aligncenter alignright | image",
+      position: "node",
+      scope: "node",
+    });
+
+    editor.ui.registry.addContextToolbar("textselection1", {
+      predicate: function (node) {
+        return !editor.selection.isCollapsed();
+      },
+      items: "blockquote | bold italic | removeformat",
+      position: "selection",
+      scope: "node",
+    });
+  },
+  mobile: {
+    theme: "silver",
+    plugins: [
+      "quickbars casechange lists advlist anchor code codesample preview table textpattern help",
+    ],
+    toolbar:
+      " casechange bold italic underline strikethrough | formatpainter numlist bullist | h1 h2 h3 | table preview code codesample help",
+    quickbars_insert_toolbar:
+      "quicktable quickimage quicklink styles ",
+    quickbars_selection_toolbar:
+      "bold italic | forecolor backcolor | quicktable quickimage | styles ",
+  },
+}`;
+
+export const c4 = `{
+  plugins: "quickbars advlist advtemplate autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
+  toolbar_mode: "sliding",
+  toolbar_sticky: true,
+  toolbar_location: "bottom",
+  toolbar:
+      "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table help",
+  quickbars_insert_toolbar:
+      "quicktable quickimage quicklink styles ",
+  quickbars_selection_toolbar:
+      "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
+  advcode_inline: true,
+  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+}`;
+
+export const c5 = `{
+  plugins: [
+    "advtable", "autoresize", "anchor", "advlist", "autolink", "autosave", "charmap", "advcode", "codesample", "directionality", "emoticons", "fullscreen",
+    "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
+    "advtemplate", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
+    "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
+    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss"
+  ],
+  mergetags_prefix: '\${',
+  mergetags_suffix: '}',
+  mergetags_list: ${JSON.stringify(mergeTagsLits)},
+  autocorrect_autocorrect: true,
+  autocorrect_capitalize: true,
+  // The toolbar_mode option will no-longer accept the false value in TinyMCE 6.0, which was retained for backwards compatibility with the toolbar_drawer option. Use 'wrap' instead to keep the same functionality as false.
+  // toolbar_mode : Default Value: 'floating' / Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
+  toolbar_mode: 'sliding',
+  toolbar_sticky: true,
+  toolbar_location: 'top', //top, bottom
+  toolbar_sticky_offset: 10,
+  // Tiny Comments
+  tinycomments_mode: 'embedded',
+  tinycomments_author: 'qauser8@qa.com',
+  tinycomments_author_name: 'SuperCoolQA',
+  quickbars_insert_toolbar: 'quicktable quickimage quicklink styles',
+  quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote | code| forecolor backcolor typography| quicktable quickimage | formatpainter pageembed permanentpen styles ',
+  toolbar: "bold italic underline strikethrough subscript superscript addtemplate inserttemplate | fontfamily fontsize fontsizeinput | numlist bullist checklist | permanentpen formatpainter removeformat forecolor backcolor | blockquote nonbreaking hr pagebreak | casechange styles blocks lineheight | ltr rtl outdent indent | align alignleft aligncenter alignright alignjustify alignnone | h1 h2 h3 h4 h5 h6 h7 |" +
+    "copy cut paste pastetext selectall remove newdocument wordcount searchreplace | undo redo | save cancel restoredraft | fullscreen print preview export code help | template insertdatetime codesample emoticons charmap | anchor link unlink image media pageembed insertfile | visualblocks visualchars a11ycheck | spellchecker language spellcheckdialog | tableofcontents tableofcontentsupdate | " +
+    "table advtablerownumbering tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
+  menubar: 'file edit insert view format table footnotes footnotesupdate | tools help',
+  advcode_inline: true,
+  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+  mobile: {
+    theme: "silver",
+    plugins: [
+      "casechange link image lists advlist anchor code codesample preview table textpattern help autoresize wordcount",
+    ],
+    toolbar:
+      " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
+    contextmenu: "link image table preview",
+  },
 }`;
 
 export const c6 = `{
