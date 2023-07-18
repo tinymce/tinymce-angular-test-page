@@ -350,7 +350,6 @@ export const c1 = `{
   ${baseConfig}
   ${basePlugins}
   ${baseToolbar}
-  ui_mode: 'split',
 }`;
 
 export const c2 = `{
@@ -358,7 +357,6 @@ export const c2 = `{
   ${basePlugins}
   ${baseToolbar}
   inline: true,
-  ui_mode: 'combined',
 }`;
 
 export const c3 = `{
