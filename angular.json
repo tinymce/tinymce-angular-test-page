@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "tinymce-angular-test-page"
+  "defaultProject": "tinymce-angular-test-page",
+  "cli": {
+    "analytics": "20e086e9-e250-450f-befc-70ef491ece1f"
+  }
 }
