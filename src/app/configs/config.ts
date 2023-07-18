@@ -264,62 +264,71 @@ body {
   background-image: url('images/template-icon-manage.png');
 }`;
 
-export const c1 = `{
-  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",
+const baseConfig = `
   height: 600,
   mergetags_prefix: '\${',
   mergetags_suffix: '}',
   mergetags_list: ${JSON.stringify(mergeTagsLits)},
   autocorrect_autocorrect: true,
   autocorrect_capitalize: true,
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput| bold italic | wordcount | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
   advcode_inline: true,
   advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
   mobile: {
     theme: "silver",
-    plugins: "casechange link image lists advlist anchor code codesample preview table textpattern help wordcount",
-    toolbar:
-      " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
     contextmenu: "link image table preview",
-  },
+  },`
+
+const basePlugins = `
+  plugins: "accordion ai advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",
+`
+
+const advancePlugins = `
+  plugins: [
+    "accordion", "ai" "advtable", "autoresize", "anchor", "advlist", "autolink", "autosave", "charmap", "advcode", "codesample", "directionality", "emoticons", "fullscreen",
+    "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
+    "advtemplate", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
+    "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
+    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss"
+  ],
+ `
+
+const baseToolbar = `
+  toolbar:
+    " aidialog aishortcuts accordion bold italic underline strikethrough casechange | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
+`
+
+const advanceToolbar = `
+toolbar: "aidialog aishortcuts bold italic underline strikethrough subscript superscript addtemplate inserttemplate accordion | fontfamily fontsize fontsizeinput | numlist bullist checklist | permanentpen formatpainter removeformat forecolor backcolor | blockquote nonbreaking hr pagebreak | casechange styles blocks lineheight | ltr rtl outdent indent | align alignleft aligncenter alignright alignjustify alignnone | h1 h2 h3 h4 h5 h6 h7 |" +
+    "copy cut paste pastetext selectall remove newdocument wordcount searchreplace | undo redo | save cancel restoredraft | fullscreen print preview export code help | template insertdatetime codesample emoticons charmap | anchor link unlink image media pageembed insertfile | visualblocks visualchars a11ycheck | spellchecker language spellcheckdialog | tableofcontents tableofcontentsupdate | " +
+    "table advtablerownumbering tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
+`
+
+const quickBar = `
+  quickbars_insert_toolbar:
+    'quicktable quickimage quicklink styles',
+  quickbars_selection_toolbar:
+    'bold italic | h2 h3 | blockquote | code| forecolor backcolor typography| quicktable quickimage | formatpainter pageembed permanentpen styles ',
+`
+export const c1 = `{
+  ${baseConfig}
+  ${basePlugins}
+  ${baseToolbar}
+  ui_mode: 'split',
 }`;
 
 export const c2 = `{
+  ${baseConfig}
+  ${basePlugins}
+  ${baseToolbar}
   inline: true,
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  plugins: "advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
-  mobile: {
-    theme: "silver",
-    plugins: "casechange lists advlist anchor code codesample preview table textpattern help",
-    toolbar:
-      " casechange bold italic underline strikethrough | formatpainter numlist bullist | h1 h2 h3 | table preview code codesample help",
-  },
+  ui_mode: 'combined',
 }`;
 
 export const c3 = `{
-  plugins: "quickbars advlist advtemplate autocorrect mergetags footnotes autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  toolbar:
-    "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | footnotes footnotesupdate | table help",
-  quickbars_insert_toolbar:
-    "quicktable quickimage quicklink styles ",
-  quickbars_selection_toolbar:
-    "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
+  ${baseConfig}
+  ${basePlugins}
+  ${baseToolbar}
+  ${quickBar}
   setup: function (editor) {
     editor.ui.registry.addContextToolbar("imagealignment", {
       predicate: function (node) {
@@ -354,35 +363,20 @@ export const c3 = `{
 }`;
 
 export const c4 = `{
-  plugins: "quickbars advlist advtemplate autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help typography inlinecss",
+  ${baseConfig}
+  ${basePlugins}
+  ${baseToolbar}
+  ${quickBar}
   toolbar_mode: "sliding",
   toolbar_sticky: true,
   toolbar_location: "bottom",
-  toolbar:
-      "insertfile undo redo addtemplate inserttemplate | styles typography fontsizeinput | bold italic | permanentpen | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table help",
-  quickbars_insert_toolbar:
-      "quicktable quickimage quicklink styles ",
-  quickbars_selection_toolbar:
-      "bold italic | h2 h3 | blockquote | code| forecolor backcolor | quicktable quickimage | styles ",
-  advcode_inline: true,
-  advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
 }`;
 
 export const c5 = `{
-  plugins: [
-    "advtable", "autoresize", "anchor", "advlist", "autolink", "autosave", "charmap", "advcode", "codesample", "directionality", "emoticons", "fullscreen",
-    "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
-    "advtemplate", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
-    "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
-    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss"
-  ],
-  mergetags_prefix: '\${',
-  mergetags_suffix: '}',
-  mergetags_list: ${JSON.stringify(mergeTagsLits)},
-  autocorrect_autocorrect: true,
-  autocorrect_capitalize: true,
-  // The toolbar_mode option will no-longer accept the false value in TinyMCE 6.0, which was retained for backwards compatibility with the toolbar_drawer option. Use 'wrap' instead to keep the same functionality as false.
-  // toolbar_mode : Default Value: 'floating' / Possible Values: 'floating', 'sliding', 'scrolling', or 'wrap'
+  ${baseConfig}
+  ${advancePlugins}
+  ${advanceToolbar}
+  ${quickBar}
   toolbar_mode: 'sliding',
   toolbar_sticky: true,
   toolbar_location: 'top', //top, bottom
@@ -391,11 +385,6 @@ export const c5 = `{
   tinycomments_mode: 'embedded',
   tinycomments_author: 'qauser8@qa.com',
   tinycomments_author_name: 'SuperCoolQA',
-  quickbars_insert_toolbar: 'quicktable quickimage quicklink styles',
-  quickbars_selection_toolbar: 'bold italic | h2 h3 | blockquote | code| forecolor backcolor typography| quicktable quickimage | formatpainter pageembed permanentpen styles ',
-  toolbar: "bold italic underline strikethrough subscript superscript addtemplate inserttemplate | fontfamily fontsize fontsizeinput | numlist bullist checklist | permanentpen formatpainter removeformat forecolor backcolor | blockquote nonbreaking hr pagebreak | casechange styles blocks lineheight | ltr rtl outdent indent | align alignleft aligncenter alignright alignjustify alignnone | h1 h2 h3 h4 h5 h6 h7 |" +
-    "copy cut paste pastetext selectall remove newdocument wordcount searchreplace | undo redo | save cancel restoredraft | fullscreen print preview export code help | template insertdatetime codesample emoticons charmap | anchor link unlink image media pageembed insertfile | visualblocks visualchars a11ycheck | spellchecker language spellcheckdialog | tableofcontents tableofcontentsupdate | " +
-    "table advtablerownumbering tableclass tablecellclass tablecellvalign tablecellborderwidth tablecellborderstyle tablecaption tablecellbackgroundcolor tablecellbordercolor tablerowheader tablecolheader",
   menubar: 'file edit insert view format table footnotes footnotesupdate | tools help',
   advcode_inline: true,
   advtemplate_templates: ${JSON.stringify(advtemplate_templates)},
@@ -408,113 +397,4 @@ export const c5 = `{
       " casechange bold italic underline strikethrough | wordcount numlist bullist | h1 h2 h3 | table preview code codesample help",
     contextmenu: "link image table preview",
   },
-}`;
-
-export const c6 = `{
-  selector: "textarea.t6",
-  // The template plugin is needed to use the replace values feature
-  // to make dynamic templates (though there is many ways to achieve
-  // dynamic templates.).
-  // Tip! To make TinyMCE leaner, only include the plugins you actually need
-  plugins: "link lists code visualblocks table image template",
-  // Nothing special about the toolbar in this demo.
-  toolbar: "undo redo | styles | bold italic strikethrough backcolor | bullist numlist link image hr | code",
-  // Tip! The height option accepts any valid CSS for height
-  height: "calc(100vh - 4rem)",
-  // The template plugin allows inserting variables inside a template which is
-  // then replaced with these values upon insertion. This is one way to
-  // achieve dynamic templates. Another way would be to generate the whole template
-  // dynamically upon request in case the template_replace_values can be removed.
-  // https://www.tiny.cloud/docs/plugins/template/#template_replace_values
-  template_replace_values: {
-    username: "Jack Black",
-    userid: "991234-22"
-  },
-  // A simple way to get dates into the templates is using the creation date feature
-  // of the template plugin.
-  // https://www.tiny.cloud/docs/plugins/template/#template_cdate_classes
-  template_cdate_classes: "cdate creationdate",
-  setup: function setup(editor) {
-    const templates = ${JSON.stringify(templates)};
-    // When the editor is clicked we monitor what is being clicked and
-    // take appropriate actions. This is how we dedect if a insert template
-    // button has been clicked. This event is triggered for every click inside
-    // TinyMCE.
-    // https://www.tiny.cloud/docs/advanced/events/
-
-    editor.on("click", function (e) {
-      // Check if the content contains the placeholder inserted above.
-      // The get() function looks for an id attribute.
-      // https://www.tiny.cloud/docs/api/tinymce.dom/tinymce.dom.domutils/#get
-      var placeholderExists = editor.dom.get("placeholder"); // If a button html element is being clicked this would return true which.
-
-      var button = editor.dom.getParent(e.target, "button");
-
-      if (placeholderExists) {
-        // If a insert button is button is being clicked or to proceed with an
-        // empty document.
-        if (button) {
-          // In our demo we have a button that manages templates (a feature you have
-          // to build yourself). We first check if that is the button being clicked.
-          // If not, it means we want to insert a template.
-          if (button.id === "manage_templates") {
-            alert("Managing templates is done by the host app (not part of tinymce)");
-          } else {
-            //
-            // If replacement values is not needed, then setContent can be used.
-            // This also means we're not using the template plugin so all references
-            // to it can be removed. Remove the alternative insert template block
-            // below.
-            //
-
-            /*
-                      // Inject the template into the content, replacing the placeholder
-                      // https://www.tiny.cloud/docs/api/tinymce/tinymce.editor/#setcontent
-                      editor.setContent(templates[button.id]);
-                      // Optionally set the cursor at the beginning of the document
-                      editor.selection.setCursorLocation(editor.getBody().firstChild, 0);
-                      // Optionally scroll the document to the top if the template is larger
-                      // than the editor viewport.
-                      editor.getWin().scrollTo(0, 0);
-                      */
-            //
-            // Use the template plugin to get replace values working (variables
-            // inside templates).
-            //
-            // Remove all content from the editor
-            editor.setContent(""); // Force set the selection at the beginning of the empty document where
-            // we want the template to be inserted
-            // https://www.tiny.cloud/docs/api/tinymce.dom/tinymce.dom.selection/#setcursorlocation
-
-            editor.selection.setCursorLocation(editor.getBody().firstChild, 0); // Insert the template
-            // https://www.tiny.cloud/docs/plugins/template/#commands
-
-            editor.execCommand("mceInsertTemplate", false, templates[button.id]); // Optionally once again set the cursor at the beginning of the document (optional)
-
-            editor.selection.setCursorLocation(editor.getBody().firstChild, 0); // Optionally scroll to the top if the inserted template is larger than
-            // the editor viewport
-
-            editor.getWin().scrollTo(0, 0);
-          }
-        } else {
-          // In this demo we want to start an empty document with a title.
-          // This does not force having a title for a document, it's simply
-          // a convenience feature.
-          editor.setContent("<h1><br></h1>");
-        }
-      }
-    });
-    editor.on("preinit", function () {
-      // To prevent the placeholder to be submitted out of TinyMCE we
-      // remove it upon serialization. In this case, any <div> tag
-      // will be removed, so adapt it to your needs.
-      // https://www.tiny.cloud/docs/api/tinymce.dom/tinymce.dom.serializer/#addnodefilter
-      editor.serializer.addNodeFilter("div", function (nodes) {
-        nodes.forEach(function (node) {
-          node.remove();
-        });
-      });
-    });
-  },
-  content_style: "${contentStyle}"
 }`;

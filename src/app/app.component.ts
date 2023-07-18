@@ -4,8 +4,7 @@ import { c1 as classicConf,
   c2 as inlineConf,
   c3 as quickbarsConf,
   c4 as bottoolbarConf,
-  c5 as resizeContent,
-  c6 as templateConfig } from './configs/config';
+  c5 as resizeContent } from './configs/config';
 
 import {basic, full, template} from './snippets/snippets';
 
@@ -50,8 +49,7 @@ export class AppComponent {
     inlineConf,
     quickbarsConf,
     bottoolbarConf,
-    resizeContent,
-    templateConfig
+    resizeContent
   }
 
   public channels = [
@@ -145,6 +143,7 @@ const initFromConf = (conf: any) => {
     try {
       next = Function('"use strict";return (' + conf + ')')();
     } catch (err) {
+      stop;
       console.error('failed to parse configuration: ', err);
     }
   }
