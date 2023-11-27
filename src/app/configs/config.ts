@@ -312,7 +312,10 @@ const baseConfig = `
   mobile: {
     theme: "silver",
     contextmenu: "link image table preview",
-  },`
+  },
+  pad_empty_with_br: true,
+  help_accessibility: true,
+  `
 
 const basePlugins = `
   plugins: "accordion ai advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss",

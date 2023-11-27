@@ -82,9 +82,9 @@ export class TinyComponent {
   public ngOnInit(): void {
     console.log('loading inner', this.channel);
     this.init = initFromConf(this.config);
-    this.initialValue = replaceSnippetVars(this.snippet, this.title, this.config);
+    this.initialValue = this.snippet;
     //
-    // console.log(this.config, this.snippet);
+    console.log(this.snippet);
   }
 }
 
@@ -115,6 +115,7 @@ const unwrapConfig = (config: string) => {
  * @param {string} title the title.
  * @param {string} config the config.
  * @returns {string} the snippet with variables inserted.
+ * Not too sure what this is doing, snippet is working fine without it.
  */
 const replaceSnippetVars = (snippet: any, title: string, config: string) => {
   return snippet.replaceAll(/<!--\{([a-zA-Z0-9]+)\}-->/g, function (match: any, name: any) {
