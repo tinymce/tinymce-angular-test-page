@@ -18,20 +18,20 @@ const key = 'b1g4d59rwwqxx1vj7mci23rjj8ubgb46i4xsio6ieig6fkps';
 export class AppComponent {
   title = 'tinymce-angular-test-page';
 
-  public channel = '6-dev';
+  public channel = '7-dev';
   public baseUrl = window.location.href.indexOf('?') > 0 ? window.location.href.substring(0, window.location.href.indexOf('?')) : window.location.href;
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log('setting channel to :', params['channel']);
-      this.channel = params['channel'] || '6-dev';
+      this.channel = params['channel'] || '7-dev';
     });
   }
 
   public ngOnInit(): void {
     console.log('init wrapper obj to channel: ', this.channel);
     const params = new URLSearchParams(window.location.search);
-    this.channel = params.get('channel') || '6-dev';
+    this.channel = params.get('channel') || '7-dev';
     console.log('[init] setting channel to: ', this.channel);
   }
   public ngOnDestroy(): void {
@@ -53,10 +53,12 @@ export class AppComponent {
   }
 
   public channels = [
+    { name: '7 Development', value: '7-dev' },
+    { name: '7 Testing', value: '7-testing' },
+    { name: '7 Stable', value: '7-stable' },
     { name: '6 Development', value: '6-dev' },
     { name: '6 Testing', value: '6-testing' },
     { name: '6 Stable', value: '6-stable' },
-    { name: '5 Stable', value: '5' }
   ];
 }
 
@@ -73,7 +75,7 @@ export class TinyComponent {
   @Input() public config = '';
   @Input() public snippet = '';
   @Input() public title = 'Sample';
-  @Input() public channel = '6-dev';
+  @Input() public channel = '7-dev';
   public init: any = {};
   public initialValue = '';
 
