@@ -344,6 +344,7 @@ const baseConfig = `
   },
   pad_empty_with_br: true,
   help_accessibility: true,
+  revisionhistory_fetch: () => Promise.resolve(revisions),
   exportpdf_service_url: "https://exportpdf.converter.tiny.cloud/v1/convert",
 	exportword_service_url: "https://exportdocx.converter.tiny.cloud/v1/convert",
 	importword_service_url: "https://importdocx.converter.tiny.cloud/v2/convert/docx-html",
