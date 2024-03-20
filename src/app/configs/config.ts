@@ -351,7 +351,7 @@ const baseConfig = `
   `
 
 const basePlugins = `
-  plugins: "accordion ai advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss revisionhistory exportpdf exportword importword",
+  plugins: "accordion ai advlist advtemplate autolink autocorrect mergetags footnotes lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount typography inlinecss revisionhistory exportpdf exportword importword markdown",
 `
 
 const advancePlugins = `
@@ -360,7 +360,7 @@ const advancePlugins = `
     "help", "image", "insertdatetime", "importcss", "link", "lists", "media", "nonbreaking", "pagebreak", "preview", "save", "searchreplace", "table",
     "advtemplate", "visualblocks", "visualchars", "wordcount", "casechange", "checklist", "powerpaste", "a11ychecker", "tinymcespellchecker", "tinydrive",
     "tableofcontents", "editimage", "mentions", "mediaembed", "permanentpen", "formatpainter", "pageembed", "linkchecker", "tinycomments", "export",
-    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss", "revisionhistory", "exportpdf", "exportword", "importword"
+    "autocorrect", "mergetags", "footnotes", "typography", "inlinecss", "revisionhistory", "exportpdf", "exportword", "importword", "markdown"
   ],
  `
 
