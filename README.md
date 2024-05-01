@@ -46,6 +46,9 @@ pnpm run build
 bun run build
 ```
 
+The compiled output will be placed in the `dist/` directory.
+
+
 ## Running the Development Server
 To start the development server, execute:
 ```shell
@@ -64,5 +67,3 @@ pnpm start
 ```shell
 bun start
 ```
-
-The compiled output will be placed in the `dist/` directory.
