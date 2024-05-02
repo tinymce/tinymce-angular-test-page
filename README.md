@@ -1,16 +1,68 @@
-# TinymceAngularTestPage
+# Tinymce Angular Test Page
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+This project is built using [Angular CLI](https://github.com/angular/angular-cli) version 15.2.9.
 
-## Project setup
-```
+## Table of Contents
+- [Setting Up the Project](#setting-up-the-project)
+- [Running the Development Server](#running-the-development-server)
+- [Building the Project](#building-the-project)
+
+## Setting Up the Project
+To install all dependencies, run:
+```bash
 yarn install
 ```
 
-## Development server
+Alternatively, you can use `npm`, `pnpm`, or `bun`:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```bash
+npm install
+```
 
-## Build
+```bash
+pnpm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+bun install
+```
+
+## Running the Development Server
+To start the development server, execute:
+```shell
+yarn start
+```
+
+For other package managers:
+```shell
+npm start
+```
+
+```shell
+pnpm start
+```
+
+```shell
+bun start
+```
+
+## Building the Project
+To compile the project, use:
+```shell
+yarn build
+```
+
+For other package managers:
+```shell
+npm run build
+```
+
+```shell
+pnpm run build
+```
+
+```shell
+bun run build
+```
+
+The compiled output will be placed in the `dist/` directory.
