@@ -8,7 +8,7 @@ import { c1 as classicConf,
 
 import {basic, full, template} from './snippets/snippets';
 
-const key = 'b1g4d59rwwqxx1vj7mci23rjj8ubgb46i4xsio6ieig6fkps';
+const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
 
 @Component({
   selector: 'app-root',
