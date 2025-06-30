@@ -18,7 +18,7 @@ const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
 export class AppComponent {
   title = 'tinymce-angular-test-page';
 
-  public channel = '7-dev';
+  public channel: any = '8-dev';
   public baseUrl = window.location.href.indexOf('?') > 0 ? window.location.href.substring(0, window.location.href.indexOf('?')) : window.location.href;
 
   constructor(private activatedRoute: ActivatedRoute) {
@@ -53,6 +53,7 @@ export class AppComponent {
   }
 
   public channels = [
+    { name: '8 Development', value: '8-dev' },
     { name: '7 Development', value: '7-dev' },
     { name: '7 Testing', value: '7-testing' },
     { name: '7 Stable', value: '7-stable' },
@@ -75,7 +76,7 @@ export class TinyComponent {
   @Input() public config = '';
   @Input() public snippet = '';
   @Input() public title = 'Sample';
-  @Input() public channel = '7-dev';
+  @Input() public channel: any = '8-dev';
   public init: any = {};
   public initialValue = '';
 
