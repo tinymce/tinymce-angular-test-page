@@ -18,7 +18,7 @@ const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
 export class AppComponent {
   title = 'tinymce-angular-test-page';
 
-  public channel: any = '8-dev';
+  public channel = '8-dev';
   public baseUrl = window.location.href.indexOf('?') > 0 ? window.location.href.substring(0, window.location.href.indexOf('?')) : window.location.href;
 
   constructor(private activatedRoute: ActivatedRoute) {
