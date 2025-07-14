@@ -53,6 +53,7 @@ export class AppComponent {
   }
 
   public channels = [
+    { name: '8 Testing', value: '8-testing' },
     { name: '8 Development', value: '8-dev' },
     { name: '7 Development', value: '7-dev' },
     { name: '7 Testing', value: '7-testing' },
