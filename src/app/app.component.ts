@@ -47,7 +47,7 @@ export class AppComponent {
     { name: '8 Development', value: '8-dev' },
     { name: '8 Testing', value: '8-testing' },
     { name: '8 Stable', value: '8-stable' },
-     { name: '7 Development', value: '7-dev' },
+    { name: '7 Development', value: '7-dev' },
     { name: '7 Testing', value: '7-testing' },
     { name: '7 Stable', value: '7-stable' },
     { name: '6 Development', value: '6-dev' },
