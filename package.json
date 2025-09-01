@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.0.5",
     "@angular/platform-browser-dynamic": "^18.0.5",
     "@angular/router": "^18.0.5",
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@tinymce/tinymce-angular": "^9.0.0",
     "angular-cli-ghpages": "^2.0.3",
     "rxjs": "~7.5.0",

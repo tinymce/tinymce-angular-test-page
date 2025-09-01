@@ -16,14 +16,8 @@
 
   <p><label><input type="checkbox" id="streaming" /> Stream response</label></p>
 
-  <tiny-test [config]="configurations.classicConf" [snippet]="snippets.basic" title="Classic Editor" [channel]="channel" ></tiny-test>
-  <tiny-test [config]="configurations.inlineConf" [snippet]="snippets.basic" title="Inline Editor" [channel]="channel" ></tiny-test>
-  <tiny-test [config]="configurations.quickbarsConf" [snippet]="snippets.basic" title="Classic Editor - Quickbars on classic and mobile" [channel]="channel" ></tiny-test>
-  <tiny-test [config]="configurations.bottoolbarConf" [snippet]="snippets.basic" title="Classic Editor - bottom toolbar, quickbars, no mobile setup" [channel]="channel" ></tiny-test>
-  <tiny-test [config]="configurations.resizeContent" [snippet]="snippets.full" title="Classic Editor - autoresize with random content" [channel]="channel" ></tiny-test>
-  <!-- <tiny-test [config]="configurations.templateConfig" [snippet]="snippets.template" title="Templates" [channel]="channel" ></tiny-test> -->
-
-
+  <tiny-test [config]="configurations.classicConf" [snippet]="snippets.full" title="Classic Editor" [channel]="channel" ></tiny-test>
+  <tiny-test [config]="configurations.inlineConf" [snippet]="snippets.full" title="Inline Editor" [channel]="channel" ></tiny-test>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

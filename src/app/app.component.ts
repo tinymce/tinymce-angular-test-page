@@ -1,12 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { c1 as classicConf,
-  c2 as inlineConf,
-  c3 as quickbarsConf,
-  c4 as bottoolbarConf,
-  c5 as resizeContent } from './configs/config';
+import { generateConfig } from './configs/config';
 
-import {basic, full, template} from './snippets/snippets';
+import { full } from './snippets/snippets';
 
 const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
 
@@ -39,17 +35,12 @@ export class AppComponent {
   }
 
   public snippets = {
-    basic,
-    full,
-    template
+    full
   }
 
   public configurations = {
-    classicConf,
-    inlineConf,
-    quickbarsConf,
-    bottoolbarConf,
-    resizeContent
+    classicConf: generateConfig({ excludePlugins: ['tinydrive', 'uploadcare']}),
+    inlineConf: generateConfig({ excludePlugins: ['tinydrive', 'editimage', 'image' ], overrides: { inline: true }})
   }
 
   public channels = [

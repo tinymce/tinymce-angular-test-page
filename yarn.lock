@@ -1812,6 +1812,11 @@
   resolved "https://registry.yarnpkg.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-3.0.13.tgz#93bcd6dc24afd1cc60dd88a65b9e4fab32dcf397"
   integrity sha512-UCrMJQY/gJnOl3XgbWRZZUvGGBuKy6i0YNSptgMzHBjs+QYDYR1Mt/RLTOPy4fzzves65O1EDmlL//OzEqoLlA==
 
+"@microsoft/fetch-event-source@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fetch-event-source/-/fetch-event-source-2.0.1.tgz#9ceecc94b49fbaa15666e38ae8587f64acce007d"
+  integrity sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==
+
 "@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@msgpackr-extract/msgpackr-extract-darwin-arm64/-/msgpackr-extract-darwin-arm64-3.0.3.tgz#9edec61b22c3082018a79f6d1c30289ddf3d9d11"
