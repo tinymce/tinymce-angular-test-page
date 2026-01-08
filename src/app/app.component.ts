@@ -9,7 +9,8 @@ const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent {
   title = 'tinymce-angular-test-page';
@@ -64,6 +65,7 @@ export class AppComponent {
     <editor [apiKey]="apiKey" [cloudChannel]="channel" [initialValue]="initialValue" [init]="init" ></editor>
   </div>
   `,
+  standalone: false
 })
 export class TinyComponent {
   @Input() public config = '';
