@@ -7236,10 +7236,10 @@ tinyglobby@^0.2.12, tinyglobby@^0.2.13:
     fdir "^6.5.0"
     picomatch "^4.0.3"
 
-tinymce@^7.9.1:
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-7.9.1.tgz#1b18bad9cb7a3b4b12e3e5a7f29fc7daad0713d7"
-  integrity sha512-zaOHwmiP1EqTeLRXAvVriDb00JYnfEjWGPdKEuac7MiZJ5aiDMZ4Unc98Gmajn+PBljOmO1GKV6G0KwWn3+k8A==
+tinymce@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-8.3.1.tgz#04d53f0b18e6ff69afe2bd748b86e495c61d260e"
+  integrity sha512-mdQdTAA90aEIyhEteIwy+QQ6UnxPCd3qQ5MlGvvByOvnjyOSdBzBcmnXeqWuhGz3fIs3XBJjIw7JyIMiHjebqw==
 
 tmp@^0.2.1:
   version "0.2.3"
