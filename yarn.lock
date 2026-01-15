@@ -2770,10 +2770,10 @@
   resolved "https://registry.yarnpkg.com/@standard-schema/spec/-/spec-1.1.0.tgz#a79b55dbaf8604812f52d140b2c9ab41bc150bb8"
   integrity sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==
 
-"@tinymce/tinymce-angular@9.1.2-feature.20260113215252436.sha3b4d536":
-  version "9.1.2-feature.20260113215252436.sha3b4d536"
-  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-angular/-/tinymce-angular-9.1.2-feature.20260113215252436.sha3b4d536.tgz#12ffef5a83045326d46a7102981b67603e4ea318"
-  integrity sha512-XazeoJtR0IZIbdkoVuQVxF5udgbwa4FJyEkjwWWqWzAcmRCGXzd/B30jflI9Wc7n89RFyI0vWyeaZ090Fln2xQ==
+"@tinymce/tinymce-angular@9.1.2-rc.20260115041456592.sha0aa5d93":
+  version "9.1.2-rc.20260115041456592.sha0aa5d93"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-angular/-/tinymce-angular-9.1.2-rc.20260115041456592.sha0aa5d93.tgz#fffd10e8c2e63025f76041fff163c089bc8af68d"
+  integrity sha512-DjfDZ5aRvawLY1JqJAhKgCFdilEI/oDkOqIkGouOR9LHT6TM424sj4K+utAmwzDnIdYf9SrkX53qgFOluJdFuw==
   dependencies:
     tslib "^2.3.0"
 
