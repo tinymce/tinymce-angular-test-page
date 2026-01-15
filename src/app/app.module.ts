@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from '@tinymce/tinymce-angular';
@@ -15,7 +15,7 @@ import { AppComponent, TinyComponent } from './app.component';
     EditorModule,
     RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [ provideZoneChangeDetection() ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
