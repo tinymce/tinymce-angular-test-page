@@ -40,8 +40,8 @@ export class AppComponent {
   }
 
   public configurations = {
-    classicConf: generateConfig({ excludePlugins: ['tinydrive', 'uploadcare']}),
-    inlineConf: generateConfig({ excludePlugins: ['tinydrive', 'editimage', 'image' ], overrides: { inline: true }})
+    classicConf: generateConfig({ pluginNames: ['tinydrive', 'uploadcare']}),
+    inlineConf: generateConfig({ pluginNames: ['tinydrive', 'editimage', 'image' ], config: { inline: true }})
   }
 
   public channels = [
@@ -134,7 +134,6 @@ const replaceSnippetVars = (snippet: any, title: string, config: string) => {
  */
 const initFromConf = (conf: any) => {
   let next  = {};
-  // console.log('parsing: ', conf);
   if (typeof conf === 'object') {
     next = {...conf}
   } else {
