@@ -13,7 +13,7 @@ const key = '451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu';
   styleUrls: ['./app.component.css'],
   providers: [{
     provide: TINYMCE_SCRIPT_SRC,
-    useValue: `https://cdn.staging.tiny.cloud/1/451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu/tinymce/8-dev/tinymce.min.js`,
+    useValue: `https://cdn.staging.tiny.cloud/1/451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu/tinymce/8-testing/tinymce.min.js`,
   }],
   standalone: false
 })
