@@ -1,9 +1,6 @@
-import { fetchEventSource } from '@microsoft/fetch-event-source';
-import type { Editor } from 'tinymce';
 import TinymceaiConfig from './tinymceai';
 import AdvtemplateConfig from './advtemplate';
 import AccordionConfig from './accordion';
-import AiConfigPlugin from './ai';
 import MergetagsConfig from './mergetags';
 import MentionsConfig from './mentions';
 import TinyCommentsConfig from './tinycomments';
@@ -96,7 +93,6 @@ const pluginsConfig: PluginConfig[] = [
   AdvcodeConfig,
   AdvtableConfig,
   AdvtemplateConfig,
-  AiConfigPlugin,
   AutocorrectConfig,
   CasechangeConfig,
   ChecklistConfig,
@@ -126,20 +122,15 @@ const pluginsConfig: PluginConfig[] = [
   TinymceaiConfig,
 ];
 
-interface Config {
-  excludePlugins?: string[];
-  overrides?: {}
-}
-
 interface PluginConfig <C = {}> {
   name: string;
   toolbar?: string;
   config: C;
 }
 
-interface OverrideConfig {
-  pluginNames?: string[];
-  config?: {};
+interface Options {
+  excludePlugins?: string[];
+  overrideConfig?: {};
 }
 
 const API_URL = 'https://demouserdirectory.tiny.cloud/v1/users';
@@ -163,13 +154,13 @@ const basicConfig = {
 };
 
 const toolbarConfig = pluginsConfig.map((plugin: PluginConfig) => plugin?.toolbar).filter(Boolean).join(' | ');
-const generateConfig = ({pluginNames, config}: OverrideConfig): any => {
-  const plugins = pluginsConfig.map((p: PluginConfig) => p.name).filter((name) => !pluginNames?.includes(name as never));
+const generateConfig = ({excludePlugins, overrideConfig}: Options): any => {
+  const plugins = pluginsConfig.map((p: PluginConfig) => p.name).filter((name) => !excludePlugins?.includes(name as never));
   const extractedPluginsConfig = pluginsConfig.reduce((acc, cur) => ({ ...acc, ...cur.config }), {});
   const finalConfig = {
     ...basicConfig,
     ...extractedPluginsConfig,
-    ...config
+    ...overrideConfig
   };
 
   return {

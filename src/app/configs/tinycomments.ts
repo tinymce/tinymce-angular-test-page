@@ -31,8 +31,6 @@ const randomString = () => {
   return crypto.getRandomValues(new Uint32Array(1))[0].toString(36).substring(2, 14);
 };
 
-
-
 const tinycomments_reply = (req: any, done: any) => {
   const replyUid = 'annotation-' + randomString();
   conversationDb[req.conversationUid].comments.push({

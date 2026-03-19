@@ -1,15 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { generateConfig } from './configs/config';
+import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 import { full } from './snippets/snippets';
 
-const key = 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha';
+const key = '451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers: [{
+    provide: TINYMCE_SCRIPT_SRC,
+    useValue: `https://cdn.staging.tiny.cloud/1/451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu/tinymce/8-dev/tinymce.min.js`,
+  }],
   standalone: false
 })
 export class AppComponent {
@@ -40,8 +45,8 @@ export class AppComponent {
   }
 
   public configurations = {
-    classicConf: generateConfig({ pluginNames: ['tinydrive', 'uploadcare']}),
-    inlineConf: generateConfig({ pluginNames: ['tinydrive', 'editimage', 'image' ], config: { inline: true }})
+    classicConf: generateConfig({ excludePlugins: ['tinydrive', 'uploadcare']}),
+    inlineConf: generateConfig({ excludePlugins: ['tinydrive', 'editimage', 'image' ], overrideConfig: { inline: true }})
   }
 
   public channels = [
@@ -62,7 +67,7 @@ export class AppComponent {
   template: `
   <div style="margin: 24px 0px">
     <h2>{{ title }}</h2>
-    <editor [apiKey]="apiKey" [cloudChannel]="channel" [initialValue]="initialValue" [init]="init" ></editor>
+    <editor [apiKey]="apiKey" [cloudChannel]="channel" [initialValue]="initialValue" [init]="init"></editor>
   </div>
   `,
   standalone: false
@@ -84,48 +89,6 @@ export class TinyComponent {
     console.log(this.snippet);
   }
 }
-
-const configWrapRe = /^\s*\(\s*function\s*\(\s*\)\s*\{\s*return\s*([\s\S]*);\s*\}\s*\)\s*\(\s*\)\s*;\s*$/;
-
-/**
- * Escape text to make HTML.
- * @param {string} text text to escape as HTML.
- * @returns the text with special characters escaped.
- */
-const escapeHtml = (text: any) => {
-  return text.replaceAll(/&/g, '&amp;').replaceAll(/</g, '&lt;').replaceAll(/>/g, '&gt;').replaceAll(/"/g, '&quot;').replaceAll(/'/g, '&#39;');
-}
-
-/**
- * Unwraps a config.
- * @param {string} config a config with a function wrapping it to make it easy to eval.
- * @returns {string} the unwrapped config.
- */
-const unwrapConfig = (config: string) => {
-  const m = configWrapRe.exec(config);
-  return m !== null ? m[1] : config;
-}
-
-/**
- * Process a snippet and insert the contained variables.
- * @param {string} snippet the HTML snippet with possible comment variables.
- * @param {string} title the title.
- * @param {string} config the config.
- * @returns {string} the snippet with variables inserted.
- * Not too sure what this is doing, snippet is working fine without it.
- */
-const replaceSnippetVars = (snippet: any, title: string, config: string) => {
-  return snippet.replaceAll(/<!--\{([a-zA-Z0-9]+)\}-->/g, function (match: any, name: any) {
-    if (name === 'title') {
-      return escapeHtml(title);
-    } else if (name === 'init') {
-      return `&lt;Editor init={${escapeHtml(unwrapConfig(config))}}\n/&gt;`;
-    } else {
-      console.warn('Unknown variable', match);
-      return match;
-    }
-  });
-};
 
 /**
  * Convet a config into the init parameter
