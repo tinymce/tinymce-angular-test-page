@@ -1,4 +1,3 @@
-import TinymceaiConfig from './tinymceai';
 import AdvtemplateConfig from './advtemplate';
 import AccordionConfig from './accordion';
 import MergetagsConfig from './mergetags';
@@ -55,11 +54,13 @@ import PermanentpenConfig from './permanentpen';
 import PowerpasteConfig from './powerpaste';
 import RevisionhistoryConfig from './revisionhistory';
 import TableofcontentsConfig from './tableofcontents';
+import TinymceaiConfig from './tinymceai';
 import TinymcespellcheckerConfig from './tinymcespellchecker';
 import TypographyConfig from './typography';
 import UploadcareConfig from './uploadcare';
+import { Config, Options, Params, PluginConfig  } from './types';
 
-const pluginsConfig: PluginConfig[] = [
+const pluginConfigs: PluginConfig[] = [
   AccordionConfig,
   CodeSampleConfig,
   AdvlistConfig,
@@ -122,17 +123,6 @@ const pluginsConfig: PluginConfig[] = [
   TinymceaiConfig,
 ];
 
-interface PluginConfig <C = {}> {
-  name: string;
-  toolbar?: string;
-  config: C;
-}
-
-interface Options {
-  excludePlugins?: string[];
-  overrideConfig?: {};
-}
-
 const API_URL = 'https://demouserdirectory.tiny.cloud/v1/users';
 
 const user_id = 'james-wilson';
@@ -149,17 +139,20 @@ const basicConfig = {
   fetch_users: (userIds: string[]) =>
     Promise.all(userIds.map((userId) => fetch(`${API_URL}/${userId}`)
       .then((response) => response.json())
-      .catch(() => ({ id: userId })))),
-  
+      .catch(() => ({ id: userId }))))
 };
 
-const toolbarConfig = pluginsConfig.map((plugin: PluginConfig) => plugin?.toolbar).filter(Boolean).join(' | ');
-const generateConfig = ({excludePlugins, overrideConfig}: Options): any => {
-  const plugins = pluginsConfig.map((p: PluginConfig) => p.name).filter((name) => !excludePlugins?.includes(name as never));
-  const extractedPluginsConfig = pluginsConfig.reduce((acc, cur) => ({ ...acc, ...cur.config }), {});
+const generateConfig = (params: Params, {excludePlugins, overrideConfig}: Options): any => {
+  const normalizedPluginConfigs: Config[] = pluginConfigs.reduce((acc, plugin) => {
+    const pConfig = typeof plugin === 'function' ? plugin(params) : plugin;
+    return acc.concat(pConfig);
+  }, [] as Config[]);
+  const toolbarConfig = normalizedPluginConfigs.map((plugin) => plugin?.toolbar).filter(Boolean).join(' | ');
+  const plugins = normalizedPluginConfigs.map((p: PluginConfig) => p.name).filter((name) => !excludePlugins?.includes(name as never));
+  const allConfigFromPlugins = normalizedPluginConfigs.reduce((acc, cur) => ({ ...acc, ...cur.config }), {});
   const finalConfig = {
     ...basicConfig,
-    ...extractedPluginsConfig,
+    ...allConfigFromPlugins,
     ...overrideConfig
   };
 

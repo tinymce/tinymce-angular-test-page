@@ -1,20 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { generateConfig } from './configs/config';
-import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 import { full } from './snippets/snippets';
 
-const key = '451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu';
+const params = {
+  jwtServerURL: 'https://demo.api.tiny.cloud',
+  apiKey: 'prsghhxax677rv082a1zj9b7cgjuoaqysf7h8ayxi5ao43ha'
+};
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [{
-    provide: TINYMCE_SCRIPT_SRC,
-    useValue: `https://cdn.staging.tiny.cloud/1/451hc4rk1hb0l77jr4loyiutfx7k9fs0decaxvfma65mwulu/tinymce/8-testing/tinymce.min.js`,
-  }],
   standalone: false
 })
 export class AppComponent {
@@ -45,8 +43,8 @@ export class AppComponent {
   }
 
   public configurations = {
-    classicConf: generateConfig({ excludePlugins: ['tinydrive', 'uploadcare']}),
-    inlineConf: generateConfig({ excludePlugins: ['tinydrive', 'editimage', 'image' ], overrideConfig: { inline: true }})
+    classicConf: generateConfig(params, { excludePlugins: ['tinydrive', 'uploadcare']}),
+    inlineConf: generateConfig(params, { excludePlugins: ['tinydrive', 'editimage', 'image' ], overrideConfig: { inline: true }})
   }
 
   public channels = [
@@ -80,7 +78,7 @@ export class TinyComponent {
   public init: any = {};
   public initialValue = '';
 
-  public apiKey = key;
+  public apiKey = globalConfig.apiKey;
 
   public ngOnInit(): void {
     console.log('loading inner', this.channel);

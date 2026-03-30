@@ -1,17 +1,21 @@
-const JWT_SERVER_URL = 'https://tinymce-ai-jwt.onrender.com';
+import { TinymceAIParams } from "./types";
 
-export default {
+export default (params: TinymceAIParams) => ({
   config: {
     // tinymceai_api_url: 'https://tinymceai.api.staging.tiny.cloud/',
 
     // REQUIRED: tinymceai_service_url — Base URL of the AI backend service
     // tinymceai_service_url: 'https://tinymceai.api.staging.tiny.cloud/',
-    // tinymceai_service_url: 'https://tinymceai.api.dev.tiny.cloud/',
-     tinymceai_token_provider: () => {
-      return fetch(`${JWT_SERVER_URL}/jwt`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }).then(r => r.json());
+    tinymceai_service_url: 'https://tinymceai.api.tiny.cloud/',
+    tinymceai_token_provider: async () => {
+      // Create a session and fetch a random user
+      await fetch(`${params.jwtServerURL}/1/${params.apiKey}/auth/random`, { method: "POST", credentials: "include" });
+
+      const response = await fetch(`${params.jwtServerURL}/1/${params.apiKey}/jwt/tinymceai`, {
+        credentials: 'include'
+      });
+      const token = await response.text();
+      return { token };
     },
 
 
@@ -27,7 +31,7 @@ export default {
     //   gemini-2-5-flash, gpt-4.1, gpt-4.1-mini
 
     // tinymceai_default_model — Model ID to select by default
-    tinymceai_default_model: 'auto',
+    tinymceai_default_model: 'assistant-1',
 
     // tinymceai_allow_model_selection — Show model selection dropdown (default: true)
     tinymceai_allow_model_selection: true,
@@ -50,11 +54,7 @@ export default {
 
     // tinymceai_quickactions_chat_prompts — Items in the "Chat commands" sub-menu
     // Correct control IDs: ai-chat-explain, ai-chat-summarize, ai-chat-highlight-key-points
-    tinymceai_quickactions_chat_prompts: [
-      'ai-chat-explain',
-      'ai-chat-summarize',
-      'ai-chat-highlight-key-points'
-    ],
+    tinymceai_quickactions_chat_prompts: [],
 
     // tinymceai_quickactions_change_tone_menu — Items in the "Change tone" sub-menu
     // Correct control IDs: ai-quickactions-tone-casual, ai-quickactions-tone-direct,
@@ -141,4 +141,4 @@ export default {
   },
   toolbar: 'tinymceai-chat tinymceai-review tinymceai-quickactions',
   name: 'tinymceai',
-}
+});
