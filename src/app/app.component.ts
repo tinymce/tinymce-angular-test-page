@@ -78,7 +78,7 @@ export class TinyComponent {
   public init: any = {};
   public initialValue = '';
 
-  public apiKey = globalConfig.apiKey;
+  public apiKey = params.apiKey;
 
   public ngOnInit(): void {
     console.log('loading inner', this.channel);
