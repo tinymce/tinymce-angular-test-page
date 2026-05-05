@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { generateConfig } from './configs/config';
 
-import { full } from './snippets/snippets';
 
 const params = {
   jwtServerURL: 'https://demo.api.tiny.cloud',
@@ -36,10 +35,6 @@ export class AppComponent {
   }
   public ngOnDestroy(): void {
     console.log('destroying obj');
-  }
-
-  public snippets = {
-    full
   }
 
   public configurations = {

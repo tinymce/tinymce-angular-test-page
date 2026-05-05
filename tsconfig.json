@@ -10,7 +10,6 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
@@ -21,7 +20,18 @@
     "lib": [
       "es2022",
       "dom"
-    ]
+    ],
+    "paths" : {
+      "crypto": ["node_modules/crypto-browserify"],
+      "stream": ["node_modules/stream-browserify"],
+      "assert": ["node_modules/assert"],
+      "http": ["node_modules/stream-http"],
+      "https": ["node_modules/https-browserify"],
+      "os": ["node_modules/os-browserify"],
+      "util": ["node_modules/util"],
+      "buffer": ["node_modules/buffer"],
+      "process": ["node_modules/process"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

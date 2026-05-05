@@ -142,13 +142,13 @@ const basicConfig = {
       .catch(() => ({ id: userId }))))
 };
 
-const generateConfig = (params: Params, {excludePlugins, overrideConfig}: Options): any => {
+const generateConfig = (params: Params, { overrideConfig}: Options): any => {
   const normalizedPluginConfigs: Config[] = pluginConfigs.reduce((acc, plugin) => {
     const pConfig = typeof plugin === 'function' ? plugin(params) : plugin;
     return acc.concat(pConfig);
   }, [] as Config[]);
   const toolbarConfig = normalizedPluginConfigs.map((plugin) => plugin?.toolbar).filter(Boolean).join(' | ');
-  const plugins = normalizedPluginConfigs.map((p: PluginConfig) => p.name).filter((name) => !excludePlugins?.includes(name as never));
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const allConfigFromPlugins = normalizedPluginConfigs.reduce((acc, cur) => ({ ...acc, ...cur.config }), {});
   const finalConfig = {
     ...basicConfig,
@@ -158,7 +158,7 @@ const generateConfig = (params: Params, {excludePlugins, overrideConfig}: Option
 
   return {
     ...finalConfig,
-    plugins: plugins,
+    plugins: ['tinymceai'],
     toolbar: toolbarConfig,
     height: 500
   };
@@ -169,4 +169,4 @@ export  {
   generateConfig
 };
 
-  
+

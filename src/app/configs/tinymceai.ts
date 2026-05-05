@@ -1,21 +1,48 @@
 import { TinymceAIParams } from "./types";
+import { SignJWT } from 'jose';
 
-export default (params: TinymceAIParams) => ({
+const SECRET_KEY = new TextEncoder().encode('acv8whwLOoCAeW-TMDey1L26RSLY6lAPsAE4sDmKwrK6Lq27NdxDIYqxLhSwoJfCSEF38i82ToIK8sE6n1As9MSOfhkDnpEB6H99y8EF2kHt5H5JvaalPdwW');
+
+
+const token = new SignJWT(  {
+  "aud": "lveQAFcZksbbW1Kq7hUz",
+  "sub": "admin",
+  "iat": Math.floor(Date.now() / 1000),
+  "exp": Math.floor(Date.now() / 1000) + 7200,
+  "user": {
+    "email": "user@example.com",
+    "name": "John Doe"
+  },
+  "auth": {
+    "ai": {
+      "permissions": [
+        "ai:conversations:*",
+        "ai:models:*",
+        "ai:actions:*",
+        "ai:reviews:*"
+      ]
+    }
+  }
+})
+.setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+.sign(SECRET_KEY)
+
+export default (_params: TinymceAIParams) => {
+  // const isLoggedIn = fetch(`https://demo.api.tiny.cloud/1/${params.apiKey}/auth/random`, {  method: "POST", credentials: "include" });
+
+  return {
   config: {
     // tinymceai_api_url: 'https://tinymceai.api.staging.tiny.cloud/',
 
     // REQUIRED: tinymceai_service_url — Base URL of the AI backend service
-    // tinymceai_service_url: 'https://tinymceai.api.staging.tiny.cloud/',
-    tinymceai_service_url: 'https://tinymceai.api.tiny.cloud/',
+    tinymceai_service_url: 'http://localhost:8000',
     tinymceai_token_provider: async () => {
-      // Create a session and fetch a random user
-      await fetch(`${params.jwtServerURL}/1/${params.apiKey}/auth/random`, { method: "POST", credentials: "include" });
-
-      const response = await fetch(`${params.jwtServerURL}/1/${params.apiKey}/jwt/tinymceai`, {
-        credentials: 'include'
-      });
-      const token = await response.text();
-      return { token };
+      const jwt = await token;
+      console.log('Generated JWT:', jwt);
+      // return fetch('http://localhost:8000/api/token').then(r => r.json());
+      // await isLoggedIn;
+	    // Return a JWT string in the shape the AI plugin expects: { token }.
+      return Promise.resolve({ token: jwt });
     },
 
 
@@ -31,7 +58,7 @@ export default (params: TinymceAIParams) => ({
     //   gemini-2-5-flash, gpt-4.1, gpt-4.1-mini
 
     // tinymceai_default_model — Model ID to select by default
-    tinymceai_default_model: 'assistant-1',
+    tinymceai_default_model: 'openai/gpt-4.1',
 
     // tinymceai_allow_model_selection — Show model selection dropdown (default: true)
     tinymceai_allow_model_selection: true,
@@ -141,4 +168,5 @@ export default (params: TinymceAIParams) => ({
   },
   toolbar: 'tinymceai-chat tinymceai-review tinymceai-quickactions',
   name: 'tinymceai',
-});
+  }
+}
